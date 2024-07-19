@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+import Home from "../components/home";
 
 export default function Index() {
   return (
@@ -9,7 +10,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Reset from Scratch</Text>
+      <Home />
     </View>
   );
 }
