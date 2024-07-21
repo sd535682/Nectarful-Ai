@@ -1,16 +1,7 @@
 import { Text, View } from "react-native";
-import Home from "../components/home";
+import Home from "./home/home";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Home />
-    </View>
-  );
+  return <Home />;
 }
