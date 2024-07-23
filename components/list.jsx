@@ -1,9 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
-import { FlatList } from "react-native";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Cards from "../components/cards";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { hp, wp } from "../constants/responsive";
 
 const ListView = () => {
   const [fruitsData, setFruitsData] = useState([]);
@@ -15,7 +14,9 @@ const ListView = () => {
       .catch((error) => console.log("error", error));
   }, []);
 
-  const renderListItem = ({ item }) => <Cards item={item.name} />;
+  const renderListItem = ({ item, index }) => (
+    <Cards item={item.name} index={index} column={2} />
+  );
 
   return (
     <MasonryFlashList
@@ -24,10 +25,16 @@ const ListView = () => {
       numColumns={2}
       renderItem={renderListItem}
       estimatedItemSize={100}
+      contentContainerStyle={styles.list_container}
     />
   );
 };
 
 export default ListView;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  list_container: {
+    paddingHorizontal: wp(2),
+    paddingVertical: hp(2),
+  },
+});
