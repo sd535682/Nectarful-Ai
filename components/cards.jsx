@@ -26,13 +26,14 @@ const styles = StyleSheet.create({
   card_container: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "pink",
+    backgroundColor: "#a78bfa",
     marginBottom: wp(2),
     borderRadius: wp(4),
     padding: 10,
   },
   card_text: {
     fontWeight: "bold",
+    fontSize: hp(2),
   },
   card_image: {
     height: hp(25),

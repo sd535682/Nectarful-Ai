@@ -2,10 +2,11 @@ import { StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Cards from "../components/cards";
-import { hp, wp } from "../constants/responsive";
+import { getColumn, hp, wp } from "../constants/responsive";
 
 const ListView = () => {
   const [fruitsData, setFruitsData] = useState([]);
+  const columnsCount = getColumn();
 
   useEffect(() => {
     fetch(`https://dummyjson.com/c/3970-16d1-4192-a1ac`)
@@ -15,17 +16,18 @@ const ListView = () => {
   }, []);
 
   const renderListItem = ({ item, index }) => (
-    <Cards item={item.name} index={index} column={2} />
+    <Cards item={item.name} index={index} column={columnsCount} />
   );
 
   return (
     <MasonryFlashList
       data={fruitsData}
       initialNumToRender={100}
-      numColumns={2}
+      numColumns={columnsCount}
       renderItem={renderListItem}
       estimatedItemSize={100}
       contentContainerStyle={styles.list_container}
+      showsVerticalScrollIndicator={false}
     />
   );
 };
