@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   cart: {
     borderRadius: 15,
-    padding: wp(2),
+    padding: hp(1),
     borderColor: "lightgrey",
     borderWidth: 2,
   },
