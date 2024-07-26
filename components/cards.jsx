@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
 import { hp, wp } from "../constants/responsive";
+import { Link } from "expo-router";
 
 const Cards = ({ item, index, column }) => {
   const isLast = () => {
