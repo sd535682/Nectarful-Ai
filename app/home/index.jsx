@@ -10,7 +10,6 @@ import { StatusBar } from "expo-status-bar";
 const Home = () => {
   const { top } = useSafeAreaInsets();
   const paddingTop = top > 0 ? top + 10 : top + 30;
-
   return (
     <View style={[styles.home_container, { paddingTop }]}>
       <Header />
@@ -35,3 +34,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp(2),
   },
 });
+
+//   const { top } = useSafeAreaInsets();
+//   const paddingTop = top > 0 ? top + 10 : top + 30;

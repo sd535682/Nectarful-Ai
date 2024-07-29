@@ -1,11 +1,10 @@
 import { Stack } from "expo-router";
 
-export default function RootLayout() {
+export default function HomeLayout() {
   return (
-    // Root layout consists of Index and Home Directory.
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
-      <Stack.Screen name="home" />
+      <Stack.Screen name="details/[id]" />
     </Stack>
   );
 }

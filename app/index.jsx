@@ -1,8 +1,6 @@
-import { Text, View } from "react-native";
-import Home from "./home/home";
-import { SafeAreaView } from "react-native-safe-area-context";
-import FruitDetails from "./home/fruitdetails/index";
+import { Redirect } from "expo-router";
 
 export default function Index() {
-  return <FruitDetails />;
+  // As of now, it redirects to Home screen when Index screen is loaded.
+  return <Redirect href="/home" />;
 }
