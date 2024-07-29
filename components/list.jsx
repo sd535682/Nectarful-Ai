@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Cards from "../components/cards";
 import { getColumn, hp, wp } from "../constants/responsive";
+import { FruitData } from "../api/globalapi";
 
 const ListView = () => {
   const [fruitsData, setFruitsData] = useState([]);
   const columnsCount = getColumn();
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/c/3970-16d1-4192-a1ac`)
-      .then((res) => res.json())
+    FruitData()
       .then((data) => setFruitsData(data))
       .catch((error) => console.log("error", error));
   }, []);

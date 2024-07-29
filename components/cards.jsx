@@ -11,7 +11,12 @@ const Cards = ({ item, index, column }) => {
   };
   return (
     <Pressable
-      onPress={() => router.push(`/home/details/${item.id}`)}
+      onPress={() =>
+        router.push({
+          pathname: `/home/details/${item}`,
+          params: { name: item },
+        })
+      }
       style={[styles.card_container, !isLast() && styles.card_spacing]}
     >
       <Text style={styles.card_text}>{item}</Text>
