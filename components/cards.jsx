@@ -9,17 +9,32 @@ const Cards = ({ item, index, column }) => {
   const isLast = () => {
     return (index + 1) % column === 0;
   };
+
+  const data = {
+    name: item.name,
+    genus: item.genus,
+    family: item.family,
+    order: item.order,
+    calories: item.nutritions.calories,
+    carbohydrates: item.nutritions.carbohydrates,
+    protein: item.nutritions.protein,
+    fat: item.nutritions.fat,
+    sugar: item.nutritions.sugar,
+  };
+
   return (
     <Pressable
       onPress={() =>
         router.push({
           pathname: `/home/details/${item}`,
-          params: { name: item },
+          params: {
+            item: JSON.stringify(data),
+          },
         })
       }
       style={[styles.card_container, !isLast() && styles.card_spacing]}
     >
-      <Text style={styles.card_text}>{item}</Text>
+      <Text style={styles.card_text}>{item.name}</Text>
       <Image
         source={require("../assets/images/blackberry.png")}
         style={styles.card_image}
@@ -52,3 +67,16 @@ const styles = StyleSheet.create({
     marginRight: wp(2),
   },
 });
+
+//
+
+//   name: item.name,
+//   genus: item.genus,
+//   family: item.family,
+//   order: item.order,
+//   calories: item.nutritions.calories,
+//   carbohydrates: item.nutritions.carbohydrates,
+//   protein: item.nutritions.protein,
+//   fat: item.nutritions.fat,
+//   sugar: item.nutritions.sugar,
+// },

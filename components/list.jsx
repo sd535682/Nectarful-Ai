@@ -16,7 +16,7 @@ const ListView = () => {
   }, []);
 
   const renderListItem = ({ item, index }) => (
-    <Cards item={item.name} index={index} column={columnsCount} />
+    <Cards item={item} index={index} column={columnsCount} />
   );
 
   return (
