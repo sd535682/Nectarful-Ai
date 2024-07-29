@@ -2,14 +2,16 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
 import { hp, wp } from "../constants/responsive";
-import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 
 const Cards = ({ item, index, column }) => {
+  const router = useRouter();
   const isLast = () => {
     return (index + 1) % column === 0;
   };
   return (
     <Pressable
+      onPress={() => router.push(`/home/details/${item.id}`)}
       style={[styles.card_container, !isLast() && styles.card_spacing]}
     >
       <Text style={styles.card_text}>{item}</Text>

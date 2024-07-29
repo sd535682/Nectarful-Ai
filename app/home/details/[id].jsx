@@ -5,10 +5,13 @@ import { StatusBar } from "expo-status-bar";
 import Header from "@/components/header";
 import { Image } from "expo-image";
 import { hp, wp } from "@/constants/responsive";
+import { useLocalSearchParams } from "expo-router";
 
 const FruitDetails = () => {
+  const { id } = useLocalSearchParams();
   const { top } = useSafeAreaInsets();
   const paddingTop = top > 0 ? top + 10 : top + 30;
+
   return (
     <View style={[styles.details_container, { paddingTop }]}>
       <Header />
@@ -20,7 +23,7 @@ const FruitDetails = () => {
         />
       </View>
       <View>
-        <Text>Hello</Text>
+        <Text>{id}</Text>
       </View>
       <StatusBar style="dark" />
     </View>
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
   },
 
   details_image: {
-    height: hp(100),
+    height: hp(40),
     width: wp(100),
     resizeMode: "contain",
     marginBottom: hp(2),
@@ -48,3 +51,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
+
+//   const { top } = useSafeAreaInsets();
+//   const paddingTop = top > 0 ? top + 10 : top + 30;
