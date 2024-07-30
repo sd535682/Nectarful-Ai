@@ -20,14 +20,14 @@ const FruitDetails = () => {
 
   //
   const item = JSON.parse(params.item);
-  console.log(item);
+  // console.log(item);
 
   const nutrients = [
-    { label: "Calories", key: "calories" },
-    { label: "Carbohydrates", key: "carbohydrates" },
-    { label: "Fat", key: "fat" },
-    { label: "Protein", key: "protein" },
-    { label: "Sugar", key: "sugar" },
+    { key: "Calories", value: item.calories },
+    { key: "Carbohydrates", value: item.carbohydrates },
+    { key: "Fat", value: item.fat },
+    { key: "Protein", value: item.protein },
+    { key: "Sugar", value: item.sugar },
   ];
   //
 
@@ -54,19 +54,20 @@ const FruitDetails = () => {
       </View>
       {/* ******* End of Fruit Image ******* */}
       {/* ******* Fruit Details ******* */}
-      <View style={{ flex: 0.5 }}>
-        <Text>{item.name}</Text>
+      <View style={styles.text_view}>
+        <Text style={styles.fruitTitle}>{item.name}</Text>
         <View>
-          <Text>
+          <Text style={styles.fruitDescription}>
             The {item.name} is classified under the {item.family} family,{" "}
             {item.genus} genus, and {item.order} order.
           </Text>
-          <View>
-            <Text>Nutritional Values</Text>
-            {nutrients.map((nutrient) => (
-              <Text key={nutrient.key}>{item[nutrient.key]}</Text>
-            ))}
-          </View>
+        </View>
+        <View>
+          {nutrients.map((nutrient) => (
+            <Text key={nutrient.key} style={styles.nutritionList}>
+              {nutrient.key} : {nutrient.value} gm / serve
+            </Text>
+          ))}
         </View>
       </View>
       {/* ******* End of Fruit Details ******* */}
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: wp(2),
     paddingVertical: hp(2),
+    backgroundColor: "plum",
   },
   image_container: {
     flex: 0.5,
@@ -107,5 +109,25 @@ const styles = StyleSheet.create({
     padding: hp(1),
     borderColor: "lightgrey",
     borderWidth: 2,
+  },
+  text_view: {
+    borderRadius: 30,
+    flex: 0.5,
+    backgroundColor: "white",
+    padding: hp(3),
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+  },
+  fruitTitle: {
+    fontSize: hp(5),
+    fontWeight: "bold",
+  },
+  fruitDescription: {
+    fontSize: hp(2),
+    fontWeight: "600",
+  },
+  nutritionList: {
+    fontSize: hp(2),
+    fontWeight: "600",
   },
 });
