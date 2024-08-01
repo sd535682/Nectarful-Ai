@@ -15,6 +15,8 @@ const ListView = () => {
       .catch((error) => console.log("error", error));
   }, []);
 
+  // console.log(fruitsData)
+
   const renderListItem = ({ item, index }) => (
     <Cards item={item} index={index} column={columnsCount} />
   );

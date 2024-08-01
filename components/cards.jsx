@@ -15,11 +15,12 @@ const Cards = ({ item, index, column }) => {
     genus: item.genus,
     family: item.family,
     order: item.order,
-    calories: item.nutritions.calories,
-    carbohydrates: item.nutritions.carbohydrates,
-    protein: item.nutritions.protein,
-    fat: item.nutritions.fat,
-    sugar: item.nutritions.sugar,
+    calories: item.nutritions_calories,
+    carbohydrates: item.nutritions_carbohydrates,
+    protein: item.nutritions_protein,
+    fat: item.nutritions_fat,
+    sugar: item.nutritions_sugar,
+    imageurl: item.imageurl
   };
 
   return (
@@ -36,7 +37,7 @@ const Cards = ({ item, index, column }) => {
     >
       <Text style={styles.card_text}>{item.name}</Text>
       <Image
-        source={require("../assets/images/blackberry.png")}
+        source={`${item.imageurl}`}
         style={styles.card_image}
       />
     </Pressable>
@@ -49,17 +50,20 @@ const styles = StyleSheet.create({
   card_container: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#a78bfa",
+    backgroundColor: "#fde68a",
     marginBottom: wp(2),
     borderRadius: wp(4),
     padding: 10,
+    borderColor: '#111827',
+    borderWidth: 3,
   },
   card_text: {
     fontWeight: "bold",
     fontSize: hp(2),
+    color: "#111827",
   },
   card_image: {
-    height: hp(25),
+    height: hp(20),
     width: "100%",
     contentFit: "cover",
   },
@@ -67,16 +71,3 @@ const styles = StyleSheet.create({
     marginRight: wp(2),
   },
 });
-
-//
-
-//   name: item.name,
-//   genus: item.genus,
-//   family: item.family,
-//   order: item.order,
-//   calories: item.nutritions.calories,
-//   carbohydrates: item.nutritions.carbohydrates,
-//   protein: item.nutritions.protein,
-//   fat: item.nutritions.fat,
-//   sugar: item.nutritions.sugar,
-// },

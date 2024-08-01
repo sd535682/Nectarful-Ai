@@ -28,8 +28,11 @@ const FruitDetails = () => {
     { key: "Fat", value: item.fat },
     { key: "Protein", value: item.protein },
     { key: "Sugar", value: item.sugar },
+    { key: "ImageURL", value: item.imageurl },
   ];
   //
+// console.log(params.item);
+  // 
 
   return (
     // ******* Details Screen *******
@@ -47,7 +50,7 @@ const FruitDetails = () => {
       {/* ******* Fruit Image ******* */}
       <View style={styles.image_container}>
         <Image
-          source={require("../../../assets/images/blackberry.png")}
+          source={item.imageurl}
           contentFit="cover"
           style={styles.details_image}
         />
@@ -63,7 +66,7 @@ const FruitDetails = () => {
           </Text>
         </View>
         <View>
-          {nutrients.map((nutrient) => (
+          {nutrients.slice(0, -1).map((nutrient) => (
             <Text key={nutrient.key} style={styles.nutritionList}>
               {nutrient.key} : {nutrient.value} gm / serve
             </Text>
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: wp(2),
     paddingVertical: hp(2),
-    backgroundColor: "plum",
+    backgroundColor: "#e11d48",
   },
   image_container: {
     flex: 0.5,
