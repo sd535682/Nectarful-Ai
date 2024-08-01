@@ -1,5 +1,5 @@
 import axios from "axios";
-import {url, authKey } from '../expo-env.d.ts'
+import {url, authKey } from '../lib/env'
 
 export const FruitData = () => {
   return axios.get(
