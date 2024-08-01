@@ -2,6 +2,10 @@
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Screenshots
+![alt text](lib/initial_screenshot_1.jpg)
+![alt text](lib/initial_screenshot_2.jpg)
+
 ## Description
 
 A brief description of your project.
