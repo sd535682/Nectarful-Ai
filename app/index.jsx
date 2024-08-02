@@ -1,13 +1,11 @@
-import { Redirect, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { Pressable, Text, TextInput, View } from "react-native";
 import { Image } from "expo-image";
-import AuthInput from "../components/authinput";
 import { hp, wp } from "@/constants/responsive";
 import { StatusBar } from "expo-status-bar";
 
 export default function Index() {
   const router = useRouter();
-  // As of now, it redirects to Home screen when Index screen is loaded.
   return (
     <View
       style={{
