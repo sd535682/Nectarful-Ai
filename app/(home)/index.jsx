@@ -62,10 +62,3 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
 });
-
-// . Infos
-
-// ***** For top padding on different devices according notches *****
-//
-//   const { top } = useSafeAreaInsets();
-//   const paddingTop = top > 0 ? top + 10 : top + 30;

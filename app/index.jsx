@@ -37,7 +37,7 @@ export default function Index() {
             borderRadius: 15,
             paddingVertical: 15,
           }}
-          onPress={() => router.push("/home")}
+          onPress={() => router.push("/(home)")}
         >
           <Text
             style={{

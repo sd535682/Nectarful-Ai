@@ -14,13 +14,15 @@ const ListView = () => {
       .then((data) => setFruitsData(data))
       .catch((error) => console.log("error", error));
   }, []);
-// Smoothie Call
-  useEffect(() => {
-    getSmoothieRecipe('banana')
-  .then(recipe => console.log(recipe))
-  .catch(error => console.error('Error:', error));
-  }, []);
-// 
+
+  //Smoothie Call
+  // 
+  // useEffect(() => {
+  //   getSmoothieRecipe('banana')
+  //    .then(recipe => console.log(recipe))
+  //    .catch(error => console.error('Error:', error));
+  // },[]);
+  // 
   // console.log(getSmoothieRecipe)
 
   const renderListItem = ({ item, index }) => (
