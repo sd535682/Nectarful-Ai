@@ -27,7 +27,7 @@ const Cards = ({ item, index, column }) => {
     <Pressable
       onPress={() =>
         router.push({
-          pathname: `/home/details/${item}`,
+          pathname: `/details/${item}`,
           params: {
             item: JSON.stringify(data),
           },
