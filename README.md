@@ -9,6 +9,14 @@
 
 A brief description of your project.
 
+## Tech Stacks used as of now
+
+- Expo
+- Expo Router
+- Axios
+- Supabase
+- Zustand
+
 ## Table of Contents
 
 - [Installation](#installation)

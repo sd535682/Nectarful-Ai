@@ -3,12 +3,16 @@ import React from "react";
 import { Image } from "expo-image";
 import { hp, wp } from "../constants/responsive";
 import { useRouter } from "expo-router";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useSmoothieItems } from "../zustand/fruitcart";
 
 const Cards = ({ item, index, column }) => {
   const router = useRouter();
   const isLast = () => {
     return (index + 1) % column === 0;
   };
+
+  const addFruit = useSmoothieItems(state => state.addFruit);
 
   const data = {
     name: item.name,
@@ -40,6 +44,7 @@ const Cards = ({ item, index, column }) => {
         source={`${item.imageurl}`}
         style={styles.card_image}
       />
+      <Pressable style={styles.addIngredients} onPress={()=> addFruit(item) }><MaterialIcons name="add" size={20} color="#78630f" /></Pressable>
     </Pressable>
   );
 };
@@ -70,4 +75,14 @@ const styles = StyleSheet.create({
   card_spacing: {
     marginRight: wp(2),
   },
+  addIngredients: {
+    backgroundColor: '#d9af06',
+    borderColor: '#78630f',
+    borderWidth: 2,
+    padding: 5,
+    borderRadius: wp(3),
+    position: 'absolute',
+    bottom: 2,
+    right: 2,
+  }
 });
