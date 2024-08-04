@@ -3,11 +3,11 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Screenshots
-[!Screenshot](https://i.imgur.com/UJtOFUR.png)
+[!Screenshot1](screenshots/Screenshot_1.jpg) [!Screenshot2](screenshots/Screenshot_2.jpg) [!Screenshot3](screenshots/Screenshot_3.jpg)
 
 ## Description
 
-A brief description of your project.
+A React Native app to view information about fruits and generate AI based Smoothie Recipe
 
 ## Tech Stacks used as of now
 
