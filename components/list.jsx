@@ -47,6 +47,6 @@ export default ListView;
 const styles = StyleSheet.create({
   list_container: {
     paddingHorizontal: wp(2),
-    paddingVertical: hp(2),
+    paddingBottom: hp(10)
   },
 });
