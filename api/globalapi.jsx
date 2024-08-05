@@ -12,6 +12,7 @@ export const FruitData = () => {
 
 // Meta LLama3 8b API call
 export const getSmoothieRecipe = (fruit) => {
+  const fruitList = fruit.map(fruit => fruit.name).join(',');
   return fetch(`${smoothieURL}`, {
     method: "POST",
     headers: {
@@ -22,7 +23,7 @@ export const getSmoothieRecipe = (fruit) => {
       "model": "Meta-Llama-3-8B-Instruct",
       "messages": [
         {"role": "system", "content": "You are a helpful assistant that creates short smoothie recipes based on a given fruits."},
-        {"role": "user", "content": `Create a smoothie recipe using ${fruit} as the main ingredient.`}
+        {"role": "user", "content": `Create a smoothie recipe using ${fruitList} as the main ingredients.`}
       ],
       "repetition_penalty": 1.1,
       "temperature": 0.7,
