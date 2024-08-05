@@ -93,7 +93,7 @@ const Smoothie = () => {
         </View>
         <View style={{flex: 1, marginBottom: hp(10)}}>
           <ScrollView>
-          <Markdown style={{body:{fontSize: 15, color: '#411020'}}} mergeStyle='false'>{recipe}</Markdown>
+          <Markdown style={{body:{fontSize: 15, color: '#411020'}}}>{recipe}</Markdown>
           </ScrollView>
         </View>
     </View>
