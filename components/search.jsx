@@ -4,11 +4,11 @@ import React from "react";
 import { hp, wp } from "@/constants/responsive";
 import { Feather } from "@expo/vector-icons";
 
-const Search = () => {
-  const [searchText, setSearchText] = useState("");
-  const textUpdate = (e) => {
-    setSearchText(e);
-    console.log(e);
+const Search = ({onSearch}) => {
+  const [textUpdate, setTextUpdate] = useState('');
+  const handleSearch = (text) => {
+    setTextUpdate(text);
+    onSearch(text);
   };
 
   return (
@@ -16,8 +16,8 @@ const Search = () => {
       <Feather name="search" size={hp(3)} color="black" />
       <TextInput
         style={styles.search_input}
-        value={searchText}
-        onChangeText={textUpdate}
+        value={textUpdate}
+        onChangeText={handleSearch}
         placeholder="Search"
         placeholderTextColor={"grey"}
       />

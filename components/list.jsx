@@ -1,19 +1,11 @@
 import { StyleSheet } from "react-native";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Cards from "../components/cards";
 import { getColumn, hp, wp } from "../constants/responsive";
-import { FruitData, getSmoothieRecipe } from "../api/globalapi";
 
-const ListView = () => {
-  const [fruitsData, setFruitsData] = useState([]);
+const ListView = ({fruitsData}) => {
   const columnsCount = getColumn();
-
-  useEffect(() => {
-    FruitData()
-      .then((data) => setFruitsData(data))
-      .catch((error) => console.log("error", error));
-  }, []);
 
   const renderListItem = ({ item, index }) => (
     <Cards item={item} index={index} column={columnsCount} />
