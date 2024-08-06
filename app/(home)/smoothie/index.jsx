@@ -29,8 +29,6 @@ const handleRecipe = () => {
   .catch((error) => console.error("Error:", error))
 }
 
-console.log(recipe);
-
   // Smoothie Call
   return (
     <View style={[styles.smoothie_page, { paddingTop }]}>
