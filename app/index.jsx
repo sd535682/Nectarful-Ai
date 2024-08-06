@@ -47,7 +47,7 @@ export default function Index() {
               textAlign: "center",
             }}
           >
-            Login with Google
+            Go to Home
           </Text>
         </Pressable>
       </View>
