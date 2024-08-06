@@ -4,8 +4,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Search from "../../components/search";
 import { hp, wp } from "@/constants/responsive";
 import { StatusBar } from "expo-status-bar";
-import { Feather } from "@expo/vector-icons";
-import { Image } from "expo-image";
 import { FruitData } from "../../api/globalapi";
 import { React, useState, useEffect } from "react";
 
@@ -33,16 +31,6 @@ const Home = () => {
 
   return (
     <View style={[styles.home_container, { paddingTop }]}>
-      <View style={styles.header}>
-        <Image
-          source={require("../../assets/images/avatar.png")}
-          style={styles.avatar}
-          contentFit="contain"
-        />
-        <Pressable style={styles.cart}>
-          <Feather name="shopping-bag" size={hp(3)} color="grey" />
-        </Pressable>
-      </View>
       <Text style={styles.home_title}>Explore Fruits</Text>
       <Search onSearch = {handleSearch} />
       <ListView fruitsData = {filterSearch}/>
@@ -60,7 +48,6 @@ const styles = StyleSheet.create({
   home_title: {
     fontSize: hp(3),
     fontWeight: "900",
-    paddingVertical: wp(2),
     paddingHorizontal: wp(2),
   },
   header: {

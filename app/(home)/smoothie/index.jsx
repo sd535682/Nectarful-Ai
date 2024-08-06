@@ -6,7 +6,6 @@ import { hp, wp } from "../../../constants/responsive";
 import { ScrollView } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useEffect } from "react";
 import { getSmoothieRecipe } from "../../../api/globalapi";
 import { useState } from "react";
 import Markdown from "react-native-markdown-display";
@@ -23,6 +22,14 @@ const Smoothie = () => {
       clearSmoothieItems: state.clearSmoothieItems,
     })
   );
+
+const handleRecipe = () => {
+  getSmoothieRecipe(smoothieItems)
+  .then((recipe) => setRecipe(recipe))
+  .catch((error) => console.error("Error:", error))
+}
+
+console.log(recipe);
 
   // Smoothie Call
   return (
@@ -80,11 +87,7 @@ const Smoothie = () => {
             paddingHorizontal: 20,
             paddingVertical: 10,
           }}
-          onPress={() =>
-            getSmoothieRecipe(smoothieItems)
-              .then((recipe) => setRecipe(recipe))
-              .catch((error) => console.error("Error:", error))
-          }
+          onPress={handleRecipe}
         >
           <Text style={{ fontSize: 15, fontWeight: "bold", color: "white", }}>
             Generate Smoothie
@@ -103,7 +106,7 @@ const Smoothie = () => {
 export default Smoothie;
 
 const styles = StyleSheet.create({
-  smoothie_page: { flex: 1, paddingHorizontal: wp(2) },
+  smoothie_page: { flex: 1, paddingHorizontal: wp(2), paddingVertical: wp(2) },
   smoothie_title: {
     textAlign: "left",
     fontSize: hp(3),
