@@ -40,11 +40,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito',
     fontSize: 20,
     fontWeight: '700',
-    textAlign: 'center',
   },
   bodyText: {
     fontFamily: 'Nunito',
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight: '700'
   },
   captionText: {
     fontFamily: 'SpaceMono',

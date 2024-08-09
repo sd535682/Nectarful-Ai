@@ -4,7 +4,7 @@ import { Image } from "expo-image";
 import { hp, wp } from "@/constants/responsive";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
-import { Heading, Subheading, CaptionText, UIColors } from "@/constants/uielements";
+import { Heading, Subheading, CaptionText, UIColors, BodyText } from "@/constants/uielements";
 
 export default function Index() {
   const router = useRouter();
@@ -31,7 +31,7 @@ export default function Index() {
           style={styles.buttonContainer}
           onPress={() => router.push("/(home)")}
         >
-          <Subheading style={{ color: "white" }}>Go to Home</Subheading>
+          <BodyText style={{ color: "white", textAlign: 'center', }}>Go to Home</BodyText>
         </Pressable>
       </View>
       <StatusBar style="dark" />
