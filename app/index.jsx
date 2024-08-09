@@ -1,57 +1,47 @@
 import { useRouter } from "expo-router";
-import { Pressable, Text, TextInput, View } from "react-native";
+import { Pressable, Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import { hp, wp } from "@/constants/responsive";
 import { StatusBar } from "expo-status-bar";
+import { LinearGradient } from "expo-linear-gradient";
+import { Heading, Subheading, CaptionText, UIColors } from "@/constants/uielements";
 
 export default function Index() {
   const router = useRouter();
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#ffe4e6",
-      }}
+    <LinearGradient
+      colors={[UIColors.gradient1[0], UIColors.gradient1[1]]}
+      style={styles.background}
     >
       <View
-        style={{ flex: 0.7, justifyContent: "center", alignItems: "center" }}
+        style={styles.boxContainer}
       >
         <Image
-          source={require("../assets/images/adaptive-icon.png")}
-          contentFit="cover"
-          style={{ height: hp(50), width: wp(100) }}
+          source={require("../assets/images/intro3.png")}
+          contentFit="contain"
+          style={styles.introImage}
         />
-        <Text style={{ fontSize: hp(5), fontWeight: "bold" }}>
-          Nectarful AI
-        </Text>
+        <Heading style={{ color: UIColors.textWhite }}>Nectarful AI</Heading>
+        <CaptionText style={{ color: UIColors.textWhite, textAlign: 'center' }}>Nourish with Every Sip: Healthy Smoothies for a Vibrant You</CaptionText>
       </View>
       <View
-        style={{ flex: 0.3, justifyContent: "center", alignItems: "center" }}
+        style={styles.boxContainer}
       >
         <Pressable
-          style={{
-            width: wp(90),
-            backgroundColor: "black",
-            borderRadius: 15,
-            paddingVertical: 15,
-          }}
+          style={styles.buttonContainer}
           onPress={() => router.push("/(home)")}
         >
-          <Text
-            style={{
-              fontSize: hp(2.5),
-              fontWeight: "bold",
-              color: "white",
-              textAlign: "center",
-            }}
-          >
-            Go to Home
-          </Text>
+          <Subheading style={{ color: "white" }}>Go to Home</Subheading>
         </Pressable>
       </View>
       <StatusBar style="dark" />
-    </View>
+    </LinearGradient>
   );
 }
+
+const styles = StyleSheet.create({
+  background: { flex: 1, justifyContent: 'space-around' },
+  boxContainer: { alignItems: "center" },
+  introImage: { height: hp(70), width: wp(100) },
+  buttonContainer: { width: wp(90), backgroundColor: '#3b0a08', borderRadius: 15, paddingVertical: 15 }
+});
