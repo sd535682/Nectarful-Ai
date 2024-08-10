@@ -8,7 +8,6 @@ export const useSmoothieItems = create((set) => ({
             return state.smoothieItems.find(item => item.id === fruit.id)? {smoothieItems: state.smoothieItems} : {smoothieItems : [...state.smoothieItems, fruit]}
         }
     ),
-    // addFruit: (fruit) => set(state => ({ smoothieItems: state.smoothieItems.find(item => item.id === fruit.id)? state.smoothieItems : [...state.smoothieItems, fruit] })),
     removeFruit: (fruitId) => set(state => ({ smoothieItems: state.smoothieItems.filter(item => item.id!== fruitId) })),
     clearSmoothieItems: () => set({ smoothieItems: [] }),
 }));

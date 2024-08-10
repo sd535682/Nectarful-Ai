@@ -5,6 +5,7 @@ import {useEffect} from 'react';
 
 SplashScreen.preventAutoHideAsync();
 
+// ************ Fonts setup ************
 export default function RootLayout() {
  const [loaded, error] = useFonts({
    'Poppins': require('../assets/fonts/Poppins.ttf'),
@@ -12,6 +13,7 @@ export default function RootLayout() {
    'SpaceMono': require('../assets/fonts/SpaceMono.ttf'),
  });
 
+ // ************ Hides the splash screen when fonts are loaded or Error occurs ************
  useEffect(() => {
    if (loaded || error) {
      SplashScreen.hideAsync();
@@ -23,9 +25,11 @@ export default function RootLayout() {
  }
 
  return (
+  // ************ Stack navigation setup here for home screen ************
   <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="(home)" />
+      {/* ************ Dynamic Details Page redirected from Card ************ */}
       <Stack.Screen 
         name="details/[id]" 
         options={{ 
@@ -34,18 +38,3 @@ export default function RootLayout() {
     </Stack>
  );
 }
-
-// export default function RootLayout() {
-//   return (
-//     // Root layout consists of Index and Home Directory.
-//     <Stack screenOptions={{ headerShown: false }}>
-//       <Stack.Screen name="index" />
-//       <Stack.Screen name="(home)" />
-//       <Stack.Screen 
-//         name="details/[id]" 
-//         options={{ 
-//           href: null,
-//         }}/>
-//     </Stack>
-//   );
-// }

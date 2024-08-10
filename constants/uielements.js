@@ -1,8 +1,9 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
+import { wp } from './responsive';
 
 // Base Text
-const BaseText = ({ style, children, ...props }) => (
+export const BaseText = ({ style, children, ...props }) => (
   <Text style={[styles.baseText, style]} {...props}>
     {children}
   </Text>
@@ -34,7 +35,8 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontFamily: 'Poppins',
-    fontSize: 35,
+    fontSize: 30,
+    lineHeight: wp(10),
   },
   subheading: {
     fontFamily: 'Nunito',
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     fontFamily: 'Nunito',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '700'
   },
   captionText: {
@@ -52,32 +54,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default BaseText;
-
 // Colors and Gradients
 export const UIColors = {
-  textWhite: '#fef2f2',
-  textBlack: '#1c0404',
+  semiWhite: '#FFFBF5',
+  semiBlack: '#151515',
+  elementGrey: '#b0b0b0',
+  baseGrey: '#6d6d6d',
+  elementWhite: '#fef2f2',
+  elementDark: '#3b0a08',
+  elementBlack: '#191919',
   gradient1: ["#f19ca2", "#a62025"],
+  gradient2: ["#faf7f0", "#f1ebdb"],
+  gradient3: ['#fecdd3','#fda4af']
 }
-
-// const tintColorLight = '#0a7ea4';
-// const tintColorDark = '#fff';
-// export const UIelements = {
-//   light: {
-//     text: '#11181C',
-//     background: '#fff',
-//     tint: tintColorLight,
-//     icon: '#687076',
-//     tabIconDefault: '#687076',
-//     tabIconSelected: tintColorLight,
-//   },
-//   dark: {
-//     text: '#ECEDEE',
-//     background: '#151718',
-//     tint: tintColorDark,
-//     icon: '#9BA1A6',
-//     tabIconDefault: '#9BA1A6',
-//     tabIconSelected: tintColorDark,
-//   },
-// };

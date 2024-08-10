@@ -1,14 +1,17 @@
 import { Tabs } from "expo-router";
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Octicons from '@expo/vector-icons/Octicons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { UIColors } from "@/constants/uielements";
 
 export default function HomeLayout() {
+
   return (
-    <Tabs screenOptions={{ headerShown: false , tabBarStyle: {backgroundColor: '#e11d48', position: "absolute", bottom: 10, left: 10, right: 10, borderRadius: 15, height: 60}}}>
-      <Tabs.Screen name="index" options={{title: 'Fruits', tabBarShowLabel: false, tabBarIcon: () => <MaterialCommunityIcons name="fruit-watermelon" size={30} color='white'/>}}/>
-      <Tabs.Screen name= 'smoothie/index' options={{title: 'Smoothie', tabBarShowLabel: false, tabBarIcon: ()=> <FontAwesome6 name="jar-wheat" size={30} color="white" />}} />
-      <Tabs.Screen name= 'profile/index' options={{title: 'Profile', tabBarShowLabel: false, tabBarIcon: ()=> <FontAwesome name="user" size={30} color="white" />}} />
+    // Home Layout with TabBar with icons for each screen.
+    <Tabs screenOptions={{ tabBarActiveTintColor: UIColors.elementDark, tabBarInactiveTintColor: UIColors.elementGrey, headerShown: false, tabBarHideOnKeyboard: true, tabBarStyle: { paddingVertical: 10 ,borderTopLeftRadius: 15, borderTopRightRadius: 15, backgroundColor: UIColors.semiWhite}}}>
+      <Tabs.Screen name="index" options={{title: 'Fruits', tabBarShowLabel: false, tabBarIcon: ({color}) => <Octicons name="home" size={20} color={color} />}}/>
+      <Tabs.Screen name= 'smoothie/index' options={{title: 'Smoothie', tabBarShowLabel: false, tabBarIcon: ({color})=> <FontAwesome6 name="wine-glass-empty" size={20} color={color}/>}} />
+      <Tabs.Screen name= 'profile/index' options={{title: 'Profile', tabBarShowLabel: false, tabBarIcon: ({color})=> <FontAwesome5 name="user" size={20} color={color}/>}} />
     </Tabs>
   );
 }

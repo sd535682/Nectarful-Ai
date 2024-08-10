@@ -1,5 +1,5 @@
 // Imports //
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, Linking } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { Image } from "expo-image";
@@ -7,6 +7,13 @@ import { hp, wp } from "@/constants/responsive";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { LinearGradient } from "expo-linear-gradient";
+import {
+  Subheading,
+  CaptionText,
+  BodyText,
+  UIColors,
+} from "../../constants/uielements";
 
 const FruitDetails = () => {
   // ******* useLocalSearchParams for getting data from Prev Page *******
@@ -17,10 +24,7 @@ const FruitDetails = () => {
   const { top } = useSafeAreaInsets();
   const paddingTop = top > 0 ? top + 10 : top + 30;
   // ******* END *******
-
-  //
   const item = JSON.parse(params.item);
-  // console.log(item);
 
   const nutrients = [
     { key: "Calories", value: item.calories },
@@ -31,22 +35,26 @@ const FruitDetails = () => {
     { key: "ImageURL", value: item.imageurl },
   ];
   //
-// console.log(params.item);
-  // 
 
   return (
     // ******* Details Screen *******
-    <View style={[styles.details_container, { paddingTop }]}>
+    <LinearGradient
+      colors={[UIColors.gradient1[0], UIColors.gradient1[1]]}
+      style={[styles.details_container, { paddingTop }]}
+    >
       {/* ******* Header ******* */}
       <View style={styles.header}>
         <Pressable style={styles.cart} onPress={() => router.back()}>
-          <Ionicons name="chevron-back" size={hp(3)} color="grey" />
+          <Ionicons
+            name="chevron-back"
+            size={20}
+            color={UIColors.elementBlack}
+          />
         </Pressable>
-        <Pressable style={styles.cart}>
-          <Feather name="shopping-bag" size={hp(3)} color="grey" />
+        <Pressable style={styles.cart} onPress={()=>Linking.openURL(`https://www.google.com/search?q=${item.name}%20fruit`)}>
+          <Feather name="info" size={20} color={UIColors.elementBlack} />
         </Pressable>
       </View>
-      {/* ******* End of Header ******* */}
       {/* ******* Fruit Image ******* */}
       <View style={styles.image_container}>
         <Image
@@ -55,28 +63,32 @@ const FruitDetails = () => {
           style={styles.details_image}
         />
       </View>
-      {/* ******* End of Fruit Image ******* */}
       {/* ******* Fruit Details ******* */}
       <View style={styles.text_view}>
-        <Text style={styles.fruitTitle}>{item.name}</Text>
+        <Subheading style={{fontSize: 25, color: UIColors.semiBlack}}>{item.name}</Subheading>
         <View>
-          <Text style={styles.fruitDescription}>
-            The {item.name} is classified under the {item.family} family,{" "}
-            {item.genus} genus, and {item.order} order.
-          </Text>
+          <BodyText style={{color: UIColors.baseGrey}}>
+          The {item.name} is classified under the {item.family} family, which is a part of the larger {item.genus} genus, and is further categorized under the {item.order} order in the biological classification system.
+          </BodyText>
         </View>
         <View>
           {nutrients.slice(0, -1).map((nutrient) => (
-            <Text key={nutrient.key} style={styles.nutritionList}>
+            <CaptionText key={nutrient.key} style={{fontSize: 12, color: UIColors.baseGrey}}>
               {nutrient.key} : {nutrient.value} gm / serve
-            </Text>
+            </CaptionText>
+          ))}
+        </View>
+        <View>
+          {nutrients.slice(0, -1).map((nutrient) => (
+            <CaptionText key={nutrient.key} style={{fontSize: 12, color: UIColors.baseGrey}}>
+              {nutrient.key} : {nutrient.value} gm / serve
+            </CaptionText>
           ))}
         </View>
       </View>
-      {/* ******* End of Fruit Details ******* */}
       {/* ******* Set Satus Icons Dark ******* */}
-      <StatusBar style="dark" />
-    </View>
+      <StatusBar style='dark' />
+    </LinearGradient>
     // ******* End of Details Screen *******
   );
 };
@@ -86,20 +98,19 @@ export default FruitDetails;
 const styles = StyleSheet.create({
   details_container: {
     flex: 1,
-    paddingHorizontal: wp(2),
-    paddingVertical: hp(2),
-    backgroundColor: "#e11d48",
   },
   image_container: {
     flex: 0.5,
+    borderTopStartRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   details_image: {
     height: hp(40),
-    width: wp(100),
-    resizeMode: "contain",
+    width: wp(90),
+    resizeMode: "cover",
     marginBottom: hp(2),
-    alignSelf: "center",
-    borderRadius: 10,
+    borderBottomLeftRadius: 30,
   },
   header: {
     flexDirection: "row",
@@ -108,29 +119,76 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp(2),
   },
   cart: {
-    borderRadius: 15,
-    padding: hp(1),
-    borderColor: "lightgrey",
-    borderWidth: 2,
+    padding: wp(2),
   },
   text_view: {
-    borderRadius: 30,
-    flex: 0.5,
-    backgroundColor: "white",
-    padding: hp(3),
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    flex: 0.6,
+    backgroundColor: UIColors.elementWhite,
     flexDirection: "column",
-    justifyContent: "space-evenly",
-  },
-  fruitTitle: {
-    fontSize: hp(5),
-    fontWeight: "bold",
-  },
-  fruitDescription: {
-    fontSize: hp(2),
-    fontWeight: "600",
-  },
-  nutritionList: {
-    fontSize: hp(2),
-    fontWeight: "600",
+    paddingHorizontal: wp(5),
+    paddingVertical: hp(3),
+    justifyContent: "space-between",
   },
 });
+
+
+
+// ********* Graph *********
+
+// import { Text, View, SafeAreaView, StyleSheet } from 'react-native';
+// import { BarChart } from "react-native-gifted-charts";
+
+// export default function App() {
+//   const barData = [
+//     {value: 81, label: 'M'},
+//     {value: 18, label: 'T'},
+//     {value: 0.4, label: 'W'},
+//     {value: 1.3, label: 'T'},
+//     {value: 18, label: 'F'},
+//   ].map(item => ({
+//     ...item,
+//     value: item.value,
+//     label: item.label,
+//     topLabelComponent: () => (
+//       <Text style={styles.barLabel}>{item.value}</Text>
+//     )
+//   }));
+
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <View style={styles.chartContainer}>
+//         <BarChart
+//         horizontal
+//           data={barData}
+//           barWidth={10}
+//           barBorderRadius={4}
+//           yAxisThickness={0}
+//           xAxisThickness={0}
+//           hideRules
+//           hideYAxisText
+//         />
+//       </View>
+//     </SafeAreaView>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: 'grey',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   chartContainer: {
+//     marginTop: 50,
+//   },
+//   barLabel: {
+//     color: 'black',
+//     fontSize: 10,
+//     fontWeight: 'bold',
+//     textAlign: 'center',
+//     marginLeft: 20,
+//   },
+// });

@@ -3,23 +3,28 @@ import { useState } from "react";
 import React from "react";
 import { hp, wp } from "@/constants/responsive";
 import { Feather } from "@expo/vector-icons";
+import { UIColors } from "@/constants/uielements";
+import { borderRadius } from "../constants/responsive";
 
 const Search = ({onSearch}) => {
+  // Logic here to filter the fruits array based on the search input
   const [textUpdate, setTextUpdate] = useState('');
+  // Function to handle search input change and update fruits array accordingly
   const handleSearch = (text) => {
     setTextUpdate(text);
     onSearch(text);
   };
 
   return (
+    // Search Bar UI with Feather Search Icon and TextInput
     <View style={styles.search_box}>
-      <Feather name="search" size={hp(3)} color="black" />
+      <Feather name="search" size={20} color= {UIColors.elementGrey} />
       <TextInput
         style={styles.search_input}
         value={textUpdate}
         onChangeText={handleSearch}
-        placeholder="Search"
-        placeholderTextColor={"grey"}
+        placeholder="Search here"
+        placeholderTextColor={UIColors.elementGrey}
       />
     </View>
   );
@@ -27,20 +32,23 @@ const Search = ({onSearch}) => {
 
 export default Search;
 
+// Search Styling
 const styles = StyleSheet.create({
   search_box: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "lightgrey",
-    marginHorizontal: wp(2),
-    padding: hp(1),
-    marginVertical: hp(2),
-    borderRadius: 10,
+    backgroundColor: UIColors.semiWhite,
+    paddingHorizontal: wp(3),
+    paddingVertical: wp(1),
+    marginVertical: wp(5),
+    borderRadius: borderRadius,
+    elevation: 1,
+    shadowColor: UIColors.elementDark,
   },
   search_input: {
     flex: 1,
-    padding: hp(1),
-    fontSize: hp(2),
-    fontWeight: "700",
+    padding: wp(2.5),
+    fontSize: 15,
+    fontFamily: 'SpaceMono',
   },
 });
