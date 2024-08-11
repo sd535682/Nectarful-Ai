@@ -1,13 +1,14 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, View, Pressable, ToastAndroid } from "react-native";
 import ListView from "../../components/list";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Search from "../../components/search";
 import { wp } from "@/constants/responsive";
-import { StatusBar } from "expo-status-bar";
 import { FruitData } from "../../api/globalapi";
 import { React, useState, useEffect } from "react";
 import { Heading, UIColors } from "@/constants/uielements";
 import { LinearGradient } from "expo-linear-gradient";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useSmoothieItems } from "../../zustand/fruitcart";
 
 const Home = () => {
   // SafeAreaInsets hook to get the top padding according to the device screen
@@ -21,28 +22,49 @@ const Home = () => {
   // Fetching the fruits data on component mount and updating the filterSearch state as well.
   useEffect(() => {
     FruitData()
-      .then((data) => {setFruitsData(data),setFilterSearch(data)})
+      .then((data) => {
+        setFruitsData(data), setFilterSearch(data);
+      })
       .catch((error) => console.log("error", error));
   }, []);
 
   // Function to handle search input changes and filter the fruits accordingly.
   const handleSearch = (text) => {
-    if(text){
-      let filter = fruitsData.filter((item) => item.name.toLowerCase().includes(text.toLowerCase().trim()));
+    if (text) {
+      let filter = fruitsData.filter((item) =>
+        item.name.toLowerCase().includes(text.toLowerCase().trim())
+      );
       setFilterSearch(filter);
-    }
-    else{
+    } else {
       setFilterSearch(fruitsData);
     }
+  };
+
+  const smoothieItems = useSmoothieItems((state) => state.smoothieItems);
+  if(smoothieItems.length >= 5){
+    ToastAndroid.show("Jar is full, Tap on Jar", ToastAndroid.SHORT);
   }
 
   return (
     // Home Screen
-    <LinearGradient colors={[UIColors.gradient2[0],UIColors.gradient2[1]]} style={[styles.home_container, { paddingTop }]}>
-      <Heading style={{color: UIColors.elementBlack}} >Discover our {'\n'}healthiest fruits</Heading>
-      <Search onSearch = {handleSearch} />
-      <ListView fruitsData = {filterSearch}/>
-      <StatusBar style="dark"/>
+    <LinearGradient
+      colors={[UIColors.gradient2[0], UIColors.gradient2[1]]}
+      style={[styles.home_container, { paddingTop }]}
+    >
+      <View style={styles.header}>
+        <Heading style={{ color: UIColors.elementBlack }}>
+          Discover our {"\n"}healthiest fruits
+        </Heading>
+        <Pressable>
+          <MaterialIcons
+            name="notifications-none"
+            size={35}
+            color={UIColors.elementDark}
+          />
+        </Pressable>
+      </View>
+      <Search onSearch={handleSearch} />
+      <ListView fruitsData={filterSearch} />
     </LinearGradient>
   );
 };
@@ -52,6 +74,11 @@ export default Home;
 const styles = StyleSheet.create({
   home_container: {
     flex: 1,
-    paddingHorizontal: wp(3)
+    paddingHorizontal: wp(3),
   },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  }
 });

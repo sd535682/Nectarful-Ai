@@ -8,12 +8,8 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
-import {
-  Subheading,
-  CaptionText,
-  BodyText,
-  UIColors,
-} from "../../constants/uielements";
+import {Subheading,BodyText,UIColors,} from "../../constants/uielements";
+import NutriGraph from "../../components/nutri_graph";
 
 const FruitDetails = () => {
   // ******* useLocalSearchParams for getting data from Prev Page *******
@@ -27,14 +23,13 @@ const FruitDetails = () => {
   const item = JSON.parse(params.item);
 
   const nutrients = [
-    { key: "Calories", value: item.calories },
-    { key: "Carbohydrates", value: item.carbohydrates },
-    { key: "Fat", value: item.fat },
-    { key: "Protein", value: item.protein },
-    { key: "Sugar", value: item.sugar },
-    { key: "ImageURL", value: item.imageurl },
+    { label: "Calories", value: item.calories },
+    { label: "Carbohydrates", value: item.carbohydrates },
+    { label: "Fat", value: item.fat },
+    { label: "Protein", value: item.protein },
+    { label: "Sugar", value: item.sugar },
+    // { label: "ImageURL", value: item.imageurl },
   ];
-  //
 
   return (
     // ******* Details Screen *******
@@ -51,12 +46,26 @@ const FruitDetails = () => {
             color={UIColors.elementBlack}
           />
         </Pressable>
-        <Pressable style={styles.cart} onPress={()=>Linking.openURL(`https://www.google.com/search?q=${item.name}%20fruit`)}>
+        <Pressable
+          style={styles.cart}
+          onPress={() =>
+            Linking.openURL(
+              `https://www.google.com/search?q=${item.name}%20fruit`
+            )
+          }
+        >
           <Feather name="info" size={20} color={UIColors.elementBlack} />
         </Pressable>
       </View>
       {/* ******* Fruit Image ******* */}
       <View style={styles.image_container}>
+        <Subheading
+          adjustsFontSizeToFit={true}
+          numberOfLines={1}
+          style={styles.backGroundName}
+        >
+          {item.name}
+        </Subheading>
         <Image
           source={item.imageurl}
           contentFit="cover"
@@ -65,29 +74,23 @@ const FruitDetails = () => {
       </View>
       {/* ******* Fruit Details ******* */}
       <View style={styles.text_view}>
-        <Subheading style={{fontSize: 25, color: UIColors.semiBlack}}>{item.name}</Subheading>
+        <Subheading style={{ fontSize: 25, color: UIColors.semiBlack }}>
+          {item.name}
+        </Subheading>
         <View>
-          <BodyText style={{color: UIColors.baseGrey}}>
-          The {item.name} is classified under the {item.family} family, which is a part of the larger {item.genus} genus, and is further categorized under the {item.order} order in the biological classification system.
+          <BodyText style={{ color: UIColors.baseGrey, fontSize: 15 }}>
+            The {item.name} is classified under the {item.family} family, which
+            is a part of the larger {item.genus} genus, and is further
+            categorized under the {item.order} order in the biological
+            classification system.
           </BodyText>
         </View>
         <View>
-          {nutrients.slice(0, -1).map((nutrient) => (
-            <CaptionText key={nutrient.key} style={{fontSize: 12, color: UIColors.baseGrey}}>
-              {nutrient.key} : {nutrient.value} gm / serve
-            </CaptionText>
-          ))}
-        </View>
-        <View>
-          {nutrients.slice(0, -1).map((nutrient) => (
-            <CaptionText key={nutrient.key} style={{fontSize: 12, color: UIColors.baseGrey}}>
-              {nutrient.key} : {nutrient.value} gm / serve
-            </CaptionText>
-          ))}
+          <NutriGraph props={nutrients} />
         </View>
       </View>
       {/* ******* Set Satus Icons Dark ******* */}
-      <StatusBar style='dark' />
+      <StatusBar style="dark" />
     </LinearGradient>
     // ******* End of Details Screen *******
   );
@@ -99,16 +102,24 @@ const styles = StyleSheet.create({
   details_container: {
     flex: 1,
   },
+  backGroundName: {
+    position: "absolute",
+    top: 0,
+    fontSize: 70,
+    color: UIColors.gradient3[1],
+    maxWidth: "100%",
+    paddingHorizontal: 20,
+  },
   image_container: {
-    flex: 0.5,
+    flex: 0.4,
     borderTopStartRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   details_image: {
-    height: hp(40),
-    width: wp(90),
-    resizeMode: "cover",
+    height: hp(30),
+    width: wp(50),
+    resizeMode: "contain",
     marginBottom: hp(2),
     borderBottomLeftRadius: 30,
   },
@@ -132,63 +143,3 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 });
-
-
-
-// ********* Graph *********
-
-// import { Text, View, SafeAreaView, StyleSheet } from 'react-native';
-// import { BarChart } from "react-native-gifted-charts";
-
-// export default function App() {
-//   const barData = [
-//     {value: 81, label: 'M'},
-//     {value: 18, label: 'T'},
-//     {value: 0.4, label: 'W'},
-//     {value: 1.3, label: 'T'},
-//     {value: 18, label: 'F'},
-//   ].map(item => ({
-//     ...item,
-//     value: item.value,
-//     label: item.label,
-//     topLabelComponent: () => (
-//       <Text style={styles.barLabel}>{item.value}</Text>
-//     )
-//   }));
-
-//   return (
-//     <SafeAreaView style={styles.container}>
-//       <View style={styles.chartContainer}>
-//         <BarChart
-//         horizontal
-//           data={barData}
-//           barWidth={10}
-//           barBorderRadius={4}
-//           yAxisThickness={0}
-//           xAxisThickness={0}
-//           hideRules
-//           hideYAxisText
-//         />
-//       </View>
-//     </SafeAreaView>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: 'grey',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   chartContainer: {
-//     marginTop: 50,
-//   },
-//   barLabel: {
-//     color: 'black',
-//     fontSize: 10,
-//     fontWeight: 'bold',
-//     textAlign: 'center',
-//     marginLeft: 20,
-//   },
-// });

@@ -38,7 +38,7 @@ export default function Index() {
         </Pressable>
       </View>
       {/* ************ Set Statusbar icon color ************ */}
-      <StatusBar style="dark" />
+      <StatusBar translucent />
     </LinearGradient>
   );
 }

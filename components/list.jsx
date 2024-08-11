@@ -22,7 +22,7 @@ const ListView = ({fruitsData}) => {
       initialNumToRender={100}
       numColumns={columnsCount}
       renderItem={renderListItem}
-      estimatedItemSize={500}
+      estimatedItemSize={300}
       showsVerticalScrollIndicator={false}
     />
   );
