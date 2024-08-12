@@ -1,9 +1,7 @@
 # Nectarful AI
 
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Thumbnail](https://github.com/user-attachments/assets/2c598220-b885-4a14-9bb3-a33350814217)
 
-## Screenshots
-[!Screenshot1](screenshots/Screenshot_1.jpg) [!Screenshot2](screenshots/Screenshot_2.jpg) [!Screenshot3](screenshots/Screenshot_3.jpg)
 
 ## Description
 
