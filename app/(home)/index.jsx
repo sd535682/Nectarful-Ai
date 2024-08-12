@@ -26,9 +26,19 @@ const Home = () => {
   useEffect(() => {
     FruitData()
       .then((data) => {
-        setFruitsData(data), setFilterSearch(data);
+        return new Promise((resolve) =>
+          setTimeout(() => {
+            resolve(data);
+          }, 3000)
+        );
       })
-      .catch((error) => console.log("error", error));
+      .then((data) => {
+        setFruitsData(data), setFilterSearch(data), setIsFetched(true);
+      })
+      .catch((error) => {
+        console.log("error", error);
+        setIsFetched(true);
+      });
   }, []);
 
   // Function to handle search input changes and filter the fruits accordingly.
@@ -67,9 +77,8 @@ const Home = () => {
         </Pressable>
       </View>
       <Search onSearch={handleSearch} />
-      {/* test */}
-      {/* test */}
-      <ListView fruitsData={filterSearch} />
+      {!isFetched? <ListShimmer /> : <ListView fruitsData={filterSearch} />}
+      {/* <ListView fruitsData={filterSearch} /> */}
     </LinearGradient>
   );
 };

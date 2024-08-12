@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
 import { borderRadius, hp, wp } from "../constants/responsive";

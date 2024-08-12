@@ -1,8 +1,7 @@
-import { StyleSheet } from "react-native";
 import React from "react";
 import { MasonryFlashList } from "@shopify/flash-list";
 import Cards from "../components/cards";
-import { getColumn, hp } from "../constants/responsive";
+import { getColumn } from "../constants/responsive";
 
 const ListView = ({fruitsData}) => {
   // Calculate the number of columns based on the screen size
@@ -22,7 +21,7 @@ const ListView = ({fruitsData}) => {
       initialNumToRender={100}
       numColumns={columnsCount}
       renderItem={renderListItem}
-      estimatedItemSize={300}
+      estimatedItemSize={272.3}
       showsVerticalScrollIndicator={false}
     />
   );
