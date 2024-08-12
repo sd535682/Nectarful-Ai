@@ -33,7 +33,8 @@ const Home = () => {
         );
       })
       .then((data) => {
-        setFruitsData(data), setFilterSearch(data), setIsFetched(true);
+        const sortedDefId = data.sort((a, b) => a.id - b.id);
+        setFruitsData(sortedDefId), setFilterSearch(sortedDefId), setIsFetched(true);
       })
       .catch((error) => {
         console.log("error", error);
@@ -58,6 +59,12 @@ const Home = () => {
     ToastAndroid.show("Jar is full, Tap on Jar", ToastAndroid.SHORT);
   }
 
+  const sortbyName = () => {
+    const sortedFruits = [...fruitsData].sort((a,b) => a.name.localeCompare(b.name));
+    setFilterSearch(sortedFruits);
+    setFruitsData(sortedFruits);
+  };
+
   return (
     // Home Screen
     <LinearGradient
@@ -76,9 +83,8 @@ const Home = () => {
           />
         </Pressable>
       </View>
-      <Search onSearch={handleSearch} />
-      {!isFetched? <ListShimmer /> : <ListView fruitsData={filterSearch} />}
-      {/* <ListView fruitsData={filterSearch} /> */}
+      <Search onSearch={handleSearch} onSort={sortbyName} />
+      {!isFetched ? <ListShimmer /> : <ListView fruitsData={filterSearch} />}
     </LinearGradient>
   );
 };

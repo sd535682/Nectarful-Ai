@@ -1,14 +1,15 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Pressable, TextInput, View } from "react-native";
 import { useState } from "react";
 import React from "react";
-import { hp, wp } from "@/constants/responsive";
+import { wp } from "@/constants/responsive";
 import { Feather } from "@expo/vector-icons";
 import { UIColors } from "@/constants/uielements";
 import { borderRadius } from "../constants/responsive";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
-const Search = ({onSearch}) => {
+const Search = ({ onSearch, onSort }) => {
   // Logic here to filter the fruits array based on the search input
-  const [textUpdate, setTextUpdate] = useState('');
+  const [textUpdate, setTextUpdate] = useState("");
   // Function to handle search input change and update fruits array accordingly
   const handleSearch = (text) => {
     setTextUpdate(text);
@@ -18,7 +19,7 @@ const Search = ({onSearch}) => {
   return (
     // Search Bar UI with Feather Search Icon and TextInput
     <View style={styles.search_box}>
-      <Feather name="search" size={20} color= {UIColors.elementGrey} />
+      <Feather name="search" size={20} color={UIColors.elementGrey} />
       <TextInput
         style={styles.search_input}
         value={textUpdate}
@@ -26,6 +27,9 @@ const Search = ({onSearch}) => {
         placeholder="Search here"
         placeholderTextColor={UIColors.elementGrey}
       />
+      <Pressable onPress={onSort}>
+        <FontAwesome6 name="sort" size={20} color={UIColors.elementGrey} />
+      </Pressable>
     </View>
   );
 };
@@ -49,6 +53,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: wp(2.5),
     fontSize: 15,
-    fontFamily: 'SpaceMono',
+    fontFamily: "SpaceMono",
   },
 });
