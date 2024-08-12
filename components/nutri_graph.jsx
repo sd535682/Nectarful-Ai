@@ -1,25 +1,54 @@
-import { BarChart } from 'react-native-gifted-charts';
-import { View, Text, ScrollView } from 'react-native';
-import { UIColors } from '../constants/uielements';
+import { BarChart } from "react-native-gifted-charts";
+import { View } from "react-native";
+import { UIColors } from "../constants/uielements";
+import { wp } from "../constants/responsive";
 
-export default function NutriGraph({props}) {
+export default function NutriGraph({ props }) {
   return (
+    <View style={{ marginVertical: wp(5) }}>
       <BarChart
+        key={props}
+        isAnimated
+        formatYLabel={(value) => `${value}g`}
+        disableScroll
+        adjustToWidth={true}
+        autoCenterTooltip={true}
+        yAxisTextStyle={{
+          fontSize: 10,
+          color: UIColors.semiBlack,
+          fontFamily: "SpaceMono",
+        }}
+        xAxisLabelTextStyle={{
+          fontSize: 10,
+          color: UIColors.semiBlack,
+          fontFamily: "SpaceMono",
+        }}
+        labelWidth={30}
+        labelsDistanceFromXaxis={0}
+        endSpacing={5}
+        fromZero={true}
         showValuesAsTopLabel
-        horizontal
+        topLabelTextStyle={{
+          fontSize: 10,
+          lineHeight: 20,
+          color: UIColors.semiBlack,
+          fontFamily: "SpaceMono",
+        }}
         hideRules
-        barWidth={20}
-        barBorderRadius={4}
-        frontColor={UIColors.elementDark}
+        barWidth={30}
+        showFractionalValues={true}
+        frontColor={UIColors.gradient1[1]}
+        // gradientColor={'#FF9800'}
+        // showGradient
+        barBorderTopLeftRadius={4}
+        barBorderTopRightRadius={4}
         data={props}
-        yAxisThickness={0}
-        xAxisThickness={0}
+        yAxisThickness={1}
+        xAxisThickness={1}
         minHeight={5}
         xAxisLabelsHeight={20}
-        hideYAxisText
-        labelsDistanceFromXaxis={20}
-        labelsExtraHeight={30}
         xAxisLabelsVerticalShift={10}
       />
+    </View>
   );
 }

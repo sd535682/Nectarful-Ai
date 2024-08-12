@@ -8,7 +8,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
-import {Subheading,BodyText,UIColors,} from "../../constants/uielements";
+import { Subheading, BodyText, UIColors } from "../../constants/uielements";
 import NutriGraph from "../../components/nutri_graph";
 
 const FruitDetails = () => {
@@ -23,12 +23,11 @@ const FruitDetails = () => {
   const item = JSON.parse(params.item);
 
   const nutrients = [
-    { label: "Calories", value: item.calories },
-    { label: "Carbohydrates", value: item.carbohydrates },
-    { label: "Fat", value: item.fat },
-    { label: "Protein", value: item.protein },
-    { label: "Sugar", value: item.sugar },
-    // { label: "ImageURL", value: item.imageurl },
+    { label: "Calories", value: item.calories, frontColor: '#BF2E21' },
+    { label: "Carbs", value: item.carbohydrates, frontColor: '#BFB417' },
+    { label: "Fat", value: item.fat, frontColor: '#F29E38' },
+    { label: "Protein", value: item.protein, frontColor: '#367368' },
+    { label: "Sugar", value: item.sugar, frontColor: '#D96A29' },
   ];
 
   return (
@@ -74,20 +73,21 @@ const FruitDetails = () => {
       </View>
       {/* ******* Fruit Details ******* */}
       <View style={styles.text_view}>
-        <Subheading style={{ fontSize: 25, color: UIColors.semiBlack }}>
+        <Subheading
+          style={{ fontSize: 25, color: UIColors.semiBlack, marginBottom: 15 }}
+        >
           {item.name}
         </Subheading>
-        <View>
-          <BodyText style={{ color: UIColors.baseGrey, fontSize: 15 }}>
-            The {item.name} is classified under the {item.family} family, which
-            is a part of the larger {item.genus} genus, and is further
-            categorized under the {item.order} order in the biological
-            classification system.
-          </BodyText>
-        </View>
-        <View>
-          <NutriGraph props={nutrients} />
-        </View>
+        {/* <View> */}
+        <BodyText style={{ color: UIColors.baseGrey, fontSize: 15 }}>
+          The {item.name} is classified under the {item.family} family, which is
+          a part of the larger {item.genus} genus, and is further categorized
+          under the {item.order} order in the biological classification system.
+        </BodyText>
+        {/* </View> */}
+        {/* <View> */}
+        <NutriGraph props={nutrients} />
+        {/* </View> */}
       </View>
       {/* ******* Set Satus Icons Dark ******* */}
       <StatusBar style="dark" />
@@ -140,6 +140,5 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     paddingHorizontal: wp(5),
     paddingVertical: hp(3),
-    justifyContent: "space-between",
   },
 });

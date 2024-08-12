@@ -10,6 +10,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useSmoothieItems } from "../../zustand/fruitcart";
 import ListShimmer from "../../components/listshimmer";
+// import HomeCarousel from "../../components/carousel";
 
 const Home = () => {
   // SafeAreaInsets hook to get the top padding according to the device screen
@@ -84,6 +85,10 @@ const Home = () => {
         </Pressable>
       </View>
       <Search onSearch={handleSearch} onSort={sortbyName} />
+      {/* Test
+      <HomeCarousel />
+      Test */}
+      {/* Conditional rendering based on whether the data is fetched or not */}
       {!isFetched ? <ListShimmer /> : <ListView fruitsData={filterSearch} />}
     </LinearGradient>
   );
