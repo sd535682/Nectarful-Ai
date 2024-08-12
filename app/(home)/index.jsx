@@ -1,4 +1,4 @@
-import { StyleSheet, View, Pressable, ToastAndroid } from "react-native";
+import { StyleSheet, View, Pressable, ToastAndroid, Text } from "react-native";
 import ListView from "../../components/list";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Search from "../../components/search";
@@ -9,6 +9,7 @@ import { Heading, UIColors } from "@/constants/uielements";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useSmoothieItems } from "../../zustand/fruitcart";
+import ListShimmer from "../../components/listshimmer";
 
 const Home = () => {
   // SafeAreaInsets hook to get the top padding according to the device screen
@@ -18,6 +19,8 @@ const Home = () => {
   const [fruitsData, setFruitsData] = useState([]);
   // State to store the filtered fruits data
   const [filterSearch, setFilterSearch] = useState([]);
+  // Shimmer effect to show loading state
+  const [isFetched, setIsFetched] = useState(false);
 
   // Fetching the fruits data on component mount and updating the filterSearch state as well.
   useEffect(() => {
@@ -41,7 +44,7 @@ const Home = () => {
   };
 
   const smoothieItems = useSmoothieItems((state) => state.smoothieItems);
-  if(smoothieItems.length >= 5){
+  if (smoothieItems.length >= 5) {
     ToastAndroid.show("Jar is full, Tap on Jar", ToastAndroid.SHORT);
   }
 
@@ -64,6 +67,8 @@ const Home = () => {
         </Pressable>
       </View>
       <Search onSearch={handleSearch} />
+      {/* test */}
+      {/* test */}
       <ListView fruitsData={filterSearch} />
     </LinearGradient>
   );
@@ -80,5 +85,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-  }
+  },
 });

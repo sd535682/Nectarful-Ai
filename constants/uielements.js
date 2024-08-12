@@ -1,6 +1,6 @@
-import React from 'react';
-import { Text, StyleSheet } from 'react-native';
-import { wp } from './responsive';
+import React from "react";
+import { Text, StyleSheet } from "react-native";
+import { wp } from "./responsive";
 
 // Base Text
 export const BaseText = ({ style, children, ...props }) => (
@@ -31,39 +31,39 @@ export const CaptionText = ({ style, ...props }) => (
 
 const styles = StyleSheet.create({
   baseText: {
-    color: '#232323',
+    color: "#232323",
   },
   heading: {
-    fontFamily: 'Poppins',
+    fontFamily: "Poppins",
     fontSize: 30,
     lineHeight: wp(10),
   },
   subheading: {
-    fontFamily: 'Nunito',
+    fontFamily: "Nunito",
     fontSize: 20,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   bodyText: {
-    fontFamily: 'Nunito',
+    fontFamily: "Nunito",
     fontSize: 16,
-    fontWeight: '700'
+    fontWeight: "700",
   },
   captionText: {
-    fontFamily: 'SpaceMono',
+    fontFamily: "SpaceMono",
     fontSize: 16,
-  }
+  },
 });
 
 // Colors and Gradients
 export const UIColors = {
-  semiWhite: '#FFFBF5',
-  semiBlack: '#151515',
-  elementGrey: '#b0b0b0',
-  baseGrey: '#6d6d6d',
-  elementWhite: '#fef2f2',
-  elementDark: '#3b0a08',
-  elementBlack: '#191919',
+  semiWhite: "#FFFBF5",
+  semiBlack: "#151515",
+  elementGrey: "#b0b0b0",
+  baseGrey: "#6d6d6d",
+  elementWhite: "#fef2f2",
+  elementDark: "#3b0a08",
+  elementBlack: "#191919",
   gradient1: ["#f19ca2", "#a62025"],
   gradient2: ["#faf7f0", "#f1ebdb"],
-  gradient3: ['#fecdd3','#fda4af']
-}
+  gradient3: ["#fecdd3", "#fda4af"],
+};
