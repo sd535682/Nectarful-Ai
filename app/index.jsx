@@ -10,6 +10,7 @@ import {
   UIColors,
   BodyText,
 } from "@/constants/uielements";
+import * as Haptics from "expo-haptics";
 
 export default function Index() {
   const router = useRouter();
@@ -37,7 +38,10 @@ export default function Index() {
       <View style={styles.boxContainer}>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => router.push("/(home)")}
+          onPress={() => {
+            router.push("/(home)"),
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+          }}
         >
           <BodyText
             style={{ color: UIColors.elementWhite, textAlign: "center" }}

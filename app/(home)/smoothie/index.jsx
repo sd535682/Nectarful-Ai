@@ -17,6 +17,7 @@ import {
   BodyText,
 } from "../../../constants/uielements";
 import { Image } from "expo-image";
+import * as Haptics from "expo-haptics";
 
 const Smoothie = () => {
   const { top } = useSafeAreaInsets();
@@ -92,7 +93,13 @@ const Smoothie = () => {
         </ScrollView>
       </View>
       <View style={{ alignSelf: "center" }}>
-        <Pressable style={styles.buttonContainer} onPress={handleRecipe}>
+        <Pressable
+          style={styles.buttonContainer}
+          onPress={() => {
+            handleRecipe();
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+          }}
+        >
           <BodyText
             style={{ color: UIColors.elementWhite, textAlign: "center" }}
           >

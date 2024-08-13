@@ -5,7 +5,7 @@ import { borderRadius, hp, wp } from "../constants/responsive";
 import { useRouter } from "expo-router";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { useSmoothieItems } from "../zustand/fruitcart";
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import {
   UIColors,
   Subheading,
@@ -13,6 +13,7 @@ import {
   CaptionText,
 } from "@/constants/uielements";
 import { LinearGradient } from "expo-linear-gradient";
+import * as Haptics from "expo-haptics";
 
 const Cards = ({ item, index, column }) => {
   const router = useRouter();
@@ -60,7 +61,11 @@ const Cards = ({ item, index, column }) => {
           })
         }
       >
-        <MaterialCommunityIcons name="arrow-expand-all" size={20} style={styles.expandICon} />
+        <MaterialCommunityIcons
+          name="arrow-expand-all"
+          size={20}
+          style={styles.expandICon}
+        />
         <Image source={`${data.imageurl}`} style={styles.card_image} />
         <Subheading style={{ color: UIColors.elementDark }}>
           {data.name}
@@ -68,7 +73,13 @@ const Cards = ({ item, index, column }) => {
         <BodyText style={{ color: UIColors.semiBlack, fontSize: 12 }}>
           Sugar : {data.sugar} g/s
         </BodyText>
-        <Pressable style={styles.addIngredients} onPress={() => addFruit(item)}>
+        <Pressable
+          style={styles.addIngredients}
+          onPress={() => {
+            addFruit(item),
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          }}
+        >
           <CaptionText style={{ color: UIColors.semiWhite, fontSize: 14 }}>
             Add Item
           </CaptionText>
@@ -92,10 +103,10 @@ const styles = StyleSheet.create({
     padding: wp(5),
   },
   expandICon: {
-    position: 'absolute',
+    position: "absolute",
     top: 10,
     right: 10,
-    color: '#f19ca2'
+    color: "#f19ca2",
   },
   card_image: {
     height: hp(20),
