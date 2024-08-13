@@ -10,7 +10,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useSmoothieItems } from "../../zustand/fruitcart";
 import ListShimmer from "../../components/listshimmer";
-// import HomeCarousel from "../../components/carousel";
+import HomeCarousel from "../../components/carousel";
 
 const Home = () => {
   // SafeAreaInsets hook to get the top padding according to the device screen
@@ -35,7 +35,9 @@ const Home = () => {
       })
       .then((data) => {
         const sortedDefId = data.sort((a, b) => a.id - b.id);
-        setFruitsData(sortedDefId), setFilterSearch(sortedDefId), setIsFetched(true);
+        setFruitsData(sortedDefId),
+          setFilterSearch(sortedDefId),
+          setIsFetched(true);
       })
       .catch((error) => {
         console.log("error", error);
@@ -61,7 +63,9 @@ const Home = () => {
   }
 
   const sortbyName = () => {
-    const sortedFruits = [...fruitsData].sort((a,b) => a.name.localeCompare(b.name));
+    const sortedFruits = [...fruitsData].sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
     setFilterSearch(sortedFruits);
     setFruitsData(sortedFruits);
   };
@@ -85,9 +89,9 @@ const Home = () => {
         </Pressable>
       </View>
       <Search onSearch={handleSearch} onSort={sortbyName} />
-      {/* Test
-      <HomeCarousel />
-      Test */}
+      <View style={{ marginBottom: 15 }}>
+        <HomeCarousel />
+      </View>
       {/* Conditional rendering based on whether the data is fetched or not */}
       {!isFetched ? <ListShimmer /> : <ListView fruitsData={filterSearch} />}
     </LinearGradient>

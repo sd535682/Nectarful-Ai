@@ -1,47 +1,36 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import { View, Text } from 'react-native';
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
-import { wp } from '../constants/responsive';
+import { FlashList } from "@shopify/flash-list";
+import Carousel_Card from "./carousel_card";
+import { FlatList } from "react-native";
 
-const HomeCarousel = forwardRef<ICarouselInstance>((props, ref) => {
-  const [data] = useState([...new Array(6).keys()]);
-  const [isFast] = useState(false);
-  const [isAutoPlay] = useState(false);
-  const [isPagingEnabled] = useState(true);
-  const carouselRef = useRef<ICarouselInstance>(null);
+export default function HomeCarousel() {
+  const data = [
+    {
+      fact: 1,
+      text: "Blueberries have the highest antioxidant content ✔ ",
+      url: `https://bbdojrpejimgligqtvqn.supabase.co/storage/v1/object/public/carousel/blueberry.png?t=2024-08-13T15%3A28%3A30.112Z`,
+    },
+    {
+      fact: 2,
+      text: "Strawberries are not true berries but aggregate of peach and pear ✔ ",
+      url: `https://bbdojrpejimgligqtvqn.supabase.co/storage/v1/object/public/carousel/morango.png?t=2024-08-13T15%3A29%3A04.364Z`,
+    },
+    {
+      fact: 3,
+      text: "Raspberries are a good source of manganese ✔ ",
+      url: `https://bbdojrpejimgligqtvqn.supabase.co/storage/v1/object/public/carousel/framboesa.png?t=2024-08-13T15%3A28%3A40.609Z`,
+    },
+  ];
 
-  useImperativeHandle(ref, () => ({
-    ...carouselRef.current,
-  }));
-
-  const baseOptions = {
-    vertical: false,
-    width: wp(85),
-    height: wp(100) / 2,
+  const renderItem = ({ item, index }) => {
+    return <Carousel_Card key={index} props={item} />;
   };
-
   return (
-    <View style={{ flex: 1 }}>
-      <Carousel
-        {...baseOptions}
-        loop={false}
-        ref={carouselRef}
-        style={{ width: '100%' }}
-        autoPlay={isAutoPlay}
-        autoPlayInterval={isFast ? 100 : 2000}
-        data={data}
-        pagingEnabled={isPagingEnabled}
-        onSnapToItem={(index) => console.log('current index:', index)}
-        renderItem={({ index }) => (
-          <View style={{ flex: 1, marginLeft: '2.5%' }}>
-            <View>
-              <Text>Hello {index}</Text>
-            </View>
-          </View>
-        )}
-      />
-    </View>
+    <FlatList
+      data={data}
+      renderItem={renderItem}
+      horizontal
+      initialNumToRender={3}
+      keyExtractor={(item) => item.fact.toString()}
+    />
   );
-});
-
-export default HomeCarousel;
+}

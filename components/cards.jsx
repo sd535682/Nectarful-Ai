@@ -61,12 +61,12 @@ const Cards = ({ item, index, column }) => {
         }
       >
         <MaterialCommunityIcons name="arrow-expand-all" size={20} style={styles.expandICon} />
-        <Image source={`${item.imageurl}`} style={styles.card_image} />
+        <Image source={`${data.imageurl}`} style={styles.card_image} />
         <Subheading style={{ color: UIColors.elementDark }}>
-          {item.name}
+          {data.name}
         </Subheading>
         <BodyText style={{ color: UIColors.semiBlack, fontSize: 12 }}>
-          Sugar : {item.nutritions_sugar} g/s
+          Sugar : {data.sugar} g/s
         </BodyText>
         <Pressable style={styles.addIngredients} onPress={() => addFruit(item)}>
           <CaptionText style={{ color: UIColors.semiWhite, fontSize: 14 }}>
