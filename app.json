@@ -4,27 +4,22 @@
     "slug": "Nectarful_AI",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/adaptive-icon.png",
+    "icon": "./assets/images/nectarai_icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "fit",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/images/intro3.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#a62025"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/nectarai_icon.png",
         "backgroundColor": "#ffffff"
       }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/icon.png"
     },
     "plugins": [
       "expo-router",
