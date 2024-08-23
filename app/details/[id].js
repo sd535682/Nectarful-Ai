@@ -1,5 +1,12 @@
 // Imports //
-import { StyleSheet, Text, View, Pressable, Linking } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  Linking,
+  ActivityIndicator,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { Image } from "expo-image";
@@ -10,8 +17,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 import { Subheading, BodyText, UIColors } from "../../constants/uielements";
 import NutriGraph from "../../components/nutri_graph";
+import { useState } from "react";
 
 const FruitDetails = () => {
+  const [imgLoader, setImgLoader] = useState(true);
   // ******* useLocalSearchParams for getting data from Prev Page *******
   const params = useLocalSearchParams();
   // ******* useRouter to get back to Prev Page *******
@@ -23,11 +32,11 @@ const FruitDetails = () => {
   const item = JSON.parse(params.item);
 
   const nutrients = [
-    { label: "Calories", value: item.calories, frontColor: '#BF2E21' },
-    { label: "Carbs", value: item.carbohydrates, frontColor: '#BFB417' },
-    { label: "Fat", value: item.fat, frontColor: '#F29E38' },
-    { label: "Protein", value: item.protein, frontColor: '#367368' },
-    { label: "Sugar", value: item.sugar, frontColor: '#D96A29' },
+    { label: "Calories", value: item.calories, frontColor: "#BF2E21" },
+    { label: "Carbs", value: item.carbohydrates, frontColor: "#BFB417" },
+    { label: "Fat", value: item.fat, frontColor: "#F29E38" },
+    { label: "Protein", value: item.protein, frontColor: "#367368" },
+    { label: "Sugar", value: item.sugar, frontColor: "#D96A29" },
   ];
 
   return (
@@ -65,11 +74,17 @@ const FruitDetails = () => {
         >
           {item.name}
         </Subheading>
-        <Image
-          source={item.imageurl}
-          contentFit="cover"
-          style={styles.details_image}
-        />
+        <>
+          <Image
+            source={item.imageurl}
+            contentFit="cover"
+            style={styles.details_image}
+            onLoadEnd={() => setImgLoader(false)}
+          />
+          {imgLoader && (
+            <ActivityIndicator size="large" color={UIColors.gradient3[1]} style={{position: 'absolute'}}/>
+          )}
+        </>
       </View>
       {/* ******* Fruit Details ******* */}
       <View style={styles.text_view}>
