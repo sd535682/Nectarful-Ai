@@ -15,7 +15,15 @@
       "android": {
         "buildType": "apk"
       }
+    },
+  
+    "development": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
     }
+    
   },
   "submit": {}
 }
