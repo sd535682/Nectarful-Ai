@@ -55,16 +55,6 @@ export default function HomeLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="profile/index"
-        options={{
-          title: "Profile",
-          tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="user" size={20} color={color} />
-          ),
-        }}
-      />
     </Tabs>
   );
 }

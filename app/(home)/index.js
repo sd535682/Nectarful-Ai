@@ -73,13 +73,6 @@ const Home = () => {
         <Heading style={{ color: UIColors.elementBlack }}>
           Discover our {"\n"}healthiest fruits
         </Heading>
-        <Pressable>
-          <MaterialIcons
-            name="notifications-none"
-            size={35}
-            color={UIColors.elementDark}
-          />
-        </Pressable>
       </View>
       <Search onSearch={handleSearch} onSort={sortbyName} />
       <View style={{ marginBottom: 15 }}>
@@ -104,15 +97,3 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-
-// supabase
-
-  // useEffect(() => {
-  //   FruitData().then(data => {
-  //     const sortedDefId = data.sort((a, b) => a.id - b.id);
-  //       setFruitsData(sortedDefId),
-  //         setFilterSearch(sortedDefId),
-  //         setIsFetched(true);
-  //   }).catch(error => console.error(error))
-  // },[])

@@ -11,14 +11,9 @@ import {
   BodyText,
 } from "@/constants/uielements";
 import * as Haptics from "expo-haptics";
-import { useEffect } from "react";
-import Auth from "../components/auth";
 
 export default function Index() {
   const router = useRouter();
-  const handleToken = () => {
-    router.push("/(home)");
-  };
 
   return (
     // ************ Linear Gradient background for Login Screen ************
@@ -42,7 +37,19 @@ export default function Index() {
       </View>
       {/* ************ Button component container ************ */}
       <View style={styles.boxContainer}>
-        <Auth />
+      <Pressable
+          style={styles.buttonContainer}
+          onPress={() => {
+            router.push("/(home)"),
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+          }}
+        >
+          <BodyText
+            style={{ color: UIColors.elementWhite, textAlign: "center" }}
+          >
+            Go to Home
+          </BodyText>
+        </Pressable>
       </View>
       {/* ************ Set Statusbar icon color ************ */}
       <StatusBar translucent />
