@@ -1,4 +1,3 @@
-import { FlashList } from "@shopify/flash-list";
 import Carousel_Card from "./carousel_card";
 import { FlatList } from "react-native";
 
@@ -31,6 +30,7 @@ export default function HomeCarousel() {
       horizontal
       initialNumToRender={3}
       keyExtractor={(item) => item.fact.toString()}
+      showsHorizontalScrollIndicator={false}
     />
   );
 }
