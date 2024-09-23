@@ -6,7 +6,7 @@ export default function App() {
   return (
     <NavigationContainer
       onReady={() => {
-        BootSplash.hide({fade: true, duration: 500});
+        BootSplash.hide({fade: true, duration: 2000});
       }}>
       <TabNavigation />
     </NavigationContainer>
