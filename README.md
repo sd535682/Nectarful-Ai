@@ -23,7 +23,7 @@ alt='Get it on GitHub' height="80">](https://github.com/sd535682/Nectarful-Ai/re
 
 **Frontend:** JavaScript, React Native, Expo
 
-**Backend:** Supabase, LLama3 8.1b
+**Backend:** Supabase, ~~LLama3 8.1b~~ Mistral 7b
 
 ## Acknowledgements
 
@@ -39,8 +39,9 @@ For feedback, email sd535682@gmail.com
 
 #### Features to be added
 
-Answer - User Login, Faster API Endpoints, Performance Improvements
+Answer - Appwrite instead of Supabase
+~~Faster API Endpoints~~, ~~Performance Improvements~~ [ Fixed in v1.1 ]
 
 #### Next Update
 
-Answer - Within 1 Week
+Answer - Within 1 Week [ Stay Tuned ]
