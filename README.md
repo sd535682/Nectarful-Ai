@@ -8,6 +8,10 @@ Your personal nutrition guide and smoothie chef, powered by AI!
 
 ![App Screenshot](https://raw.githubusercontent.com/sd535682/Nectarful-Ai/refs/heads/main/assets/banner/banner.png)
 
+## Video Guide
+
+[Video Guide](https://www.youtube.com/watch?v=_0ITl5YqaJs)
+
 ## Download
 
 [<img src="https://raw.githubusercontent.com/sd535682/Nectarful-Ai/refs/heads/main/assets/banner/download-button-png.png"
