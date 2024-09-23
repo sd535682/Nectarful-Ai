@@ -10,7 +10,7 @@ Your personal nutrition guide and smoothie chef, powered by AI!
 
 ## Download
 
-[<img src="https://raw.githubusercontent.com/WSTxda/QP-Gallery-Releases/master/Images/GitHub.svg"
+[<img src="https://raw.githubusercontent.com/sd535682/Nectarful-Ai/refs/heads/main/assets/banner/download-button-png.png"
 alt='Get it on GitHub' height="80">](https://github.com/sd535682/Nectarful-Ai/releases/tag/1.1)
 
 ## Features
