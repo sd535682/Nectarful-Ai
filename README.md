@@ -6,7 +6,7 @@ Your personal nutrition guide and smoothie chef, powered by AI!
 
 ## Overview
 
-![App Screenshot](https://raw.githubusercontent.com/sd535682/Nectarful-Ai/main/assets/readmeasset/banner.png)
+![App Screenshot](https://raw.githubusercontent.com/sd535682/Nectarful-Ai/refs/heads/main/assets/banner/banner.png)
 
 ## Download
 
